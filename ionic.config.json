@@ -1,0 +1,7 @@
+{
+  "name": "SwissArmyApp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
