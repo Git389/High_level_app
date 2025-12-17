@@ -1,17 +1,43 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 2
+      Smart Tools
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" class="ion-padding">
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+  <div style="text-align: center; margin-top: 20px;">
+    <h2>Choose a Tool</h2>
+    <p>Select a feature to start.</p>
+  </div>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6">
+        <ion-card button (click)="takePicture()" color="primary">
+          <ion-card-content style="text-align: center;">
+            <ion-icon name="camera" style="font-size: 40px;"></ion-icon>
+            <p>Camera</p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+
+      <ion-col size="6">
+        <ion-card button (click)="scanQR()" color="medium">
+          <ion-card-content style="text-align: center;">
+            <ion-icon name="qr-code" style="font-size: 40px;"></ion-icon>
+            <p>QR Scan</p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <div *ngIf="capturedImage" style="margin-top: 20px;">
+    <h3>Last Photo:</h3>
+    <img [src]="capturedImage" style="width: 100%; border-radius: 10px;" />
+  </div>
+
 </ion-content>

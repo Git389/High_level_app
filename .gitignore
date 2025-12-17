@@ -68,3 +68,19 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+
+
+# Node / Ionic
+node_modules/
+www/
+
+# Android
+android/.gradle/
+android/build/
+android/app/build/
+android/local.properties
+
+# OS / misc
+.DS_Store
+.env

@@ -1,17 +1,127 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Tab 1
-    </ion-title>
+    <ion-title>{{ 'TITLE' | translate }}</ion-title>
+    
+    <ion-buttons slot="end">
+      <ion-button (click)="switchLanguage()">
+        <ion-icon slot="icon-only" name="language"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" class="ion-padding">
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <!-- 1. LOGIN SCREEN -->
+  <div *ngIf="!isLoggedIn" style="text-align: center; margin-top: 100px;">
+    <ion-icon name="person-circle" style="font-size: 80px; color: #ccc;"></ion-icon>
+    <h2>Welcome</h2>
+    <p>Please log in to access the system.</p>
+    <ion-button (click)="login()" expand="block" style="margin-top: 20px;">
+      Login / Start Session
+    </ion-button>
+  </div>
+
+  <!-- 2. MAIN DASHBOARD (Only visible after login) -->
+  <div *ngIf="isLoggedIn">
+    
+    <h2 style="margin-left: 10px;">Hello, {{ currentUser }}!</h2>
+
+    <!-- Connection Status -->
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>{{ 'SYSTEM_CHECK' | translate }}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p style="margin-bottom: 10px; font-weight: bold; color: green;">{{ statusMessage }}</p>
+        <ion-button size="small" fill="outline" (click)="onTestConnection()">
+          {{ 'TEST_DB' | translate }}
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+<ion-item>
+  <ion-label>Dark Mode</ion-label>
+  <ion-toggle (ionChange)="toggleTheme($event)"></ion-toggle>
+</ion-item>
+
+    <!-- Team List -->
+  <ion-card>
+  <ion-card-header>
+    <ion-card-title>Group Members</ion-card-title>
+  </ion-card-header>
+
+  <ion-card-content>
+    <ion-list lines="none">
+      <ion-item>
+        <ion-label>
+          <h2>Aditya Mankar</h2>
+        </ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+          <h2>Onkar Yadav</h2>
+        </ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+          <h2>Atharva Gajbe</h2>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+
+    <ion-button expand="block" (click)="showGroupPopup()">
+      Show Notification
+    </ion-button>
+  </ion-card-content>
+</ion-card>
+
+
+<ion-card>
+  <ion-card-header>
+    <ion-card-title>Speech Assistant</ion-card-title>
+  </ion-card-header>
+
+  <ion-card-content>
+    <p style="min-height: 60px;">
+      {{ spokenText }}
+    </p>
+
+    <!-- MIC BUTTON -->
+    <ion-button
+      expand="block"
+      color="primary"
+      (click)="startListening()"
+      [disabled]="recording"
+    >
+      <ion-icon name="mic" slot="start"></ion-icon>
+      Speak
+    </ion-button>
+
+    <!-- READ ALOUD -->
+    <ion-button
+      expand="block"
+      color="secondary"
+      (click)="speakText()"
+      [disabled]="recording || spokenText === 'Press mic to speak...'"
+    >
+      <ion-icon name="volume-high" slot="start"></ion-icon>
+      Read Aloud
+    </ion-button>
+
+    <!-- RESET -->
+    <ion-button
+      expand="block"
+      fill="outline"
+      (click)="resetSpeech()"
+    >
+      Reset
+    </ion-button>
+  </ion-card-content>
+</ion-card>
+
+
+  </div>
+
 </ion-content>

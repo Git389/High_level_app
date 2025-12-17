@@ -1,2 +1,59 @@
-// For information on how to create your own theme, please refer to:
-// https://ionicframework.com/docs/theming/
+/* =====================================================
+   Ionic CSS Variables
+   Light Theme (Default)
+   ===================================================== */
+
+:root {
+  /** Primary **/
+  --ion-color-primary: #3880ff;
+  --ion-color-primary-rgb: 56, 128, 255;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-contrast-rgb: 255, 255, 255;
+  --ion-color-primary-shade: #3171e0;
+  --ion-color-primary-tint: #4c8dff;
+
+  /** Background & Text **/
+  --ion-background-color: #ffffff;
+  --ion-background-color-rgb: 255, 255, 255;
+
+  --ion-text-color: #000000;
+  --ion-text-color-rgb: 0, 0, 0;
+
+  /** Cards / Items **/
+  --ion-card-background: #ffffff;
+  --ion-item-background: #ffffff;
+
+  /** Toolbar / Tabs **/
+  --ion-toolbar-background: #ffffff;
+  --ion-tab-bar-background: #ffffff;
+}
+
+/* =====================================================
+   Dark Theme
+   Triggered by ion-theme="dark"
+   ===================================================== */
+
+:root[ion-theme="dark"] {
+  /** Primary **/
+  --ion-color-primary: #4c8dff;
+  --ion-color-primary-rgb: 76, 141, 255;
+  --ion-color-primary-contrast: #000000;
+  --ion-color-primary-contrast-rgb: 0, 0, 0;
+  --ion-color-primary-shade: #437ce0;
+  --ion-color-primary-tint: #5e9aff;
+
+  /** Background & Text **/
+  --ion-background-color: #121212;
+  --ion-background-color-rgb: 18, 18, 18;
+
+  --ion-text-color: #ffffff;
+  --ion-text-color-rgb: 255, 255, 255;
+
+  /** Cards / Items **/
+  --ion-card-background: #1e1e1e;
+  --ion-item-background: #1e1e1e;
+
+  /** Toolbar / Tabs **/
+  --ion-toolbar-background: #1a1a1a;
+  --ion-tab-bar-background: #1a1a1a;
+}

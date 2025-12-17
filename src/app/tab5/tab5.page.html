@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Timer</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Background Timer</ion-card-title>
+      <ion-card-subtitle>
+        Works even if you minimize the app (notification at end).
+      </ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="stacked">Minutes</ion-label>
+        <ion-input type="number" [(ngModel)]="minutes" [disabled]="running"></ion-input>
+      </ion-item>
+
+      <h1 style="text-align:center; margin: 18px 0;">
+        {{ formatTime(secondsLeft) }}
+      </h1>
+
+      <ion-button expand="block" (click)="startTimer()" [disabled]="running">
+        Start
+      </ion-button>
+
+      <ion-button expand="block" color="danger" (click)="stopTimer()" [disabled]="!running">
+        Stop
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
