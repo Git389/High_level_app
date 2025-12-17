@@ -9,14 +9,12 @@ import { ToastController } from '@ionic/angular';
 
 import { ThemeService } from '../services/theme.service';
 
-// Services
 import { DatabaseService } from '../services/database.service';
 import { SpeechRecognition } from '@capacitor-community/speech-recognition';
 import { PluginListenerHandle } from '@capacitor/core';
 import { TextToSpeech } from '@capacitor-community/text-to-speech';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
-// Icons
 import { addIcons } from 'ionicons';
 import { mic, micOff, volumeHigh, language, logIn, personCircle } from 'ionicons/icons';
 
@@ -46,7 +44,6 @@ export class Tab1Page implements OnDestroy {
   currentUser: string = '';
   teamMembers: any[] = [];
 
-  // ---- SPEECH STATE ----
   recording: boolean = false;
   spokenText: string = 'Press mic to speak...';
 
@@ -65,16 +62,14 @@ export class Tab1Page implements OnDestroy {
     this.translate.setDefaultLang('en');
   }
 
-  // -------- THEME --------
   async toggleTheme(ev: any) {
     const isDark = !!ev?.detail?.checked;
     await this.theme.setTheme(isDark ? 'dark' : 'light');
   }
 
-  // -------- POPUP / NOTIFICATION (TOAST) --------
   async showGroupPopup() {
     const toast = await this.toastCtrl.create({
-      message: 'Swiss Army App: Group members loaded ✅',
+      message: 'Swiss Army App: Group members loaded ',
       duration: 1800,
       position: 'bottom',
       buttons: [{ text: 'OK', role: 'cancel' }],
@@ -82,9 +77,7 @@ export class Tab1Page implements OnDestroy {
     await toast.present();
   }
 
-  // =========================
-  // ✅ CLEAN SPEECH CYCLE
-  // =========================
+
 
   async startListening() {
     try {
@@ -95,7 +88,6 @@ export class Tab1Page implements OnDestroy {
 
       await SpeechRecognition.requestPermissions();
 
-      // partialResults listener (supported by your package)
       this.partialListener = await SpeechRecognition.addListener('partialResults', (data: any) => {
         this.ngZone.run(() => {
           if (data?.matches?.length > 0) {
@@ -105,7 +97,6 @@ export class Tab1Page implements OnDestroy {
         });
       });
 
-      // listening state listener (started/stopped)
       this.listeningStateListener = await SpeechRecognition.addListener('listeningState', (data: any) => {
         this.ngZone.run(() => {
           if (data?.status === 'stopped') {
@@ -127,7 +118,6 @@ export class Tab1Page implements OnDestroy {
         popup: false,
       });
 
-      // Auto stop (prevents stuck mic)
       setTimeout(() => {
         if (this.recording) this.stopListening();
       }, 6000);
@@ -143,14 +133,12 @@ export class Tab1Page implements OnDestroy {
     try {
       await SpeechRecognition.stop();
     } catch {
-      // ignore
     } finally {
       this.recording = false;
       this.changeRef.detectChanges();
     }
   }
 
-  // ---- TEXT → SPEECH ----
   async speakText() {
     if (
       !this.spokenText ||
@@ -186,7 +174,7 @@ export class Tab1Page implements OnDestroy {
         this.listeningStateListener = undefined;
       }
     } catch {
-      // ignore
+      
     }
   }
 
@@ -194,7 +182,6 @@ export class Tab1Page implements OnDestroy {
     this.removeSpeechListeners();
   }
 
-  // -------- LOGIN --------
   async login() {
     const user = prompt("Enter Name to Login:");
     if (!user) return;
@@ -210,7 +197,7 @@ export class Tab1Page implements OnDestroy {
         this.loadTeam();
       } else {
         alert("Login Failed: " + (result?.message || "Unknown Error"));
-        this.statusMessage = "❌ Login failed";
+        this.statusMessage = " Login failed";
       }
       this.changeRef.detectChanges();
     });
@@ -224,7 +211,6 @@ export class Tab1Page implements OnDestroy {
     });
   }
 
-  // -------- EXTRAS --------
   switchLanguage() {
     this.currentLang = this.currentLang === 'en' ? 'de' : 'en';
     this.translate.use(this.currentLang);
@@ -235,7 +221,7 @@ export class Tab1Page implements OnDestroy {
     const result: any = await this.dbService.testConnection();
 
     this.ngZone.run(() => {
-      this.statusMessage = result?.success ? '✅ Connected' : '❌ Error';
+      this.statusMessage = result?.success ? 'Connected' : ' Error';
       this.changeRef.detectChanges();
     });
   }

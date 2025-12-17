@@ -12,16 +12,13 @@
 <ion-content [fullscreen]="true" class="chat-background">
   
   <div class="chat-container">
-    <!-- Messages List -->
     <div *ngFor="let msg of messages" 
          [class]="msg.sender === 'user' ? 'message-wrapper user' : 'message-wrapper bot'">
       <div class="chat-bubble">
-        <!-- Allows line breaks in AI responses -->
         <span style="white-space: pre-wrap;">{{ msg.text }}</span>
       </div>
     </div>
 
-    <!-- Loading Spinner (Shows when AI is thinking) -->
     <div *ngIf="isLoading" class="message-wrapper bot">
       <div class="chat-bubble">
         <ion-spinner name="dots"></ion-spinner>
@@ -31,19 +28,16 @@
 
 </ion-content>
 
-<!-- TEXT INPUT BAR -->
 <ion-footer>
   <ion-toolbar color="light">
     <div style="display: flex; align-items: center; padding: 5px;">
       
-      <!-- Text Input Field -->
       <ion-item lines="none" style="flex: 1; --background: transparent;">
         <ion-input placeholder="Type a message..." 
                    [(ngModel)]="userInput" 
                    (keyup.enter)="sendMessage()"></ion-input>
       </ion-item>
 
-      <!-- Send Button -->
       <ion-button fill="clear" (click)="sendMessage()">
         <ion-icon slot="icon-only" name="send" color="primary"></ion-icon>
       </ion-button>

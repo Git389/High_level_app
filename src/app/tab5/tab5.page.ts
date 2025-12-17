@@ -74,7 +74,7 @@ export class Tab5Page implements OnDestroy {
     this.startUiCountdown(totalSeconds);
 
     const toast = await this.toastCtrl.create({
-      message: `Timer started for ${this.minutes} minute(s) ✅`,
+      message: `Timer started for ${this.minutes} minute(s) `,
       duration: 1500,
       position: 'bottom',
     });

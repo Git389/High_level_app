@@ -6,7 +6,6 @@ import {
 } from '@ionic/angular/standalone';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 import { BarcodeScanner } from '@capacitor-mlkit/barcode-scanning';
-// 👇 NEW IMPORT HERE 👇
 import { CapacitorFlash } from '@capgo/capacitor-flash'; 
 import { addIcons } from 'ionicons';
 import { camera, qrCode, flashlight } from 'ionicons/icons';
@@ -30,7 +29,6 @@ export class Tab2Page {
     addIcons({ camera, qrCode, flashlight });
   }
 
-  // 1. Magnifier / Camera Logic
   async takePicture() {
     try {
       const image = await Camera.getPhoto({
@@ -45,7 +43,6 @@ export class Tab2Page {
     }
   }
 
-  // 2. QR Scanner Logic
   async scanQR() {
     const status = await BarcodeScanner.checkPermissions();
     if (status.camera !== 'granted') {
@@ -61,10 +58,8 @@ export class Tab2Page {
     }
   }
 
-  // 3. Flashlight Logic (UPDATED)
   async toggleLight() {
     this.isLightOn = !this.isLightOn;
-    // The simple toggle() function handles everything
     await CapacitorFlash.toggle();
   }
 }

@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">SwissArmyApp</string>
-    <string name="title_activity_main">SwissArmyApp</string>
+    <string name="app_name">High_Level_App</string>
+    <string name="title_activity_main">High_Level_App</string>
     <string name="package_name">io.ionic.starter</string>
     <string name="custom_url_scheme">io.ionic.starter</string>
 </resources>

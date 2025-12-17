@@ -43,7 +43,6 @@
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
-// Pulse Animation for Active Mic
 @keyframes pulse-animation {
   0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.7); }
   70% { transform: scale(1.1); box-shadow: 0 0 0 10px rgba(255, 0, 0, 0); }

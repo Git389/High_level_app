@@ -8,13 +8,11 @@ import {
   IonFooter, IonSpinner, IonItem, IonInput 
 } from '@ionic/angular/standalone';
 
-// Plugins
 import { SpeechRecognition } from '@capacitor-community/speech-recognition';
 import { TextToSpeech } from '@capacitor-community/text-to-speech';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { CapacitorHttp } from '@capacitor/core'; 
 
-// Icons
 import { addIcons } from 'ionicons';
 import { mic, micOff, volumeHigh, language, chatbubbleEllipses, send } from 'ionicons/icons';
 
@@ -39,7 +37,6 @@ export class Tab4Page {
 
   @ViewChild(IonContent) content: IonContent | undefined;
 
-  // --- 🔑 PASTE YOUR GEMINI API KEY HERE 🔑 ---
   private GEMINI_API_KEY = 'AIzaSyAlsZ-h6vgTmHUM7bGoxtSPT8HVtwaMVZs';
   // -------------------------------------------
 
@@ -61,7 +58,6 @@ export class Tab4Page {
     this.addBotMessage("Hi! I am Gemini. Type a message!");
   }
 
-  // --- CHAT HELPERS ---
   addBotMessage(text: string) {
     this.messages.push({ sender: 'bot', text: text });
     this.scrollToBottom();
@@ -78,7 +74,6 @@ export class Tab4Page {
     }, 100);
   }
 
-  // --- SEND MESSAGE ---
   async sendMessage() {
     if (!this.userInput.trim()) return;
 
@@ -89,12 +84,10 @@ export class Tab4Page {
     await this.askGemini(text); 
   }
 
-  // --- GEMINI BRAIN ---
   async askGemini(prompt: string) {
     this.isLoading = true;
     
-    // FIX: Trying 'gemini-flash-latest' which was in your available list.
-    // This safely points to whatever Flash version your key supports.
+    
     const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent?key=${this.GEMINI_API_KEY}`;
     
     const body = {
