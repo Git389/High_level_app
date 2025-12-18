@@ -178,3 +178,29 @@ A **light theme** is enforced to avoid contrast issues that can arise with dark 
 </p>
 
 ---
+
+## 🧠 Challenges Faced During Project Development
+
+### 1. UI Differences Between Browser and Android APK
+**Issue:** The application worked correctly in the browser using `ionic serve`, but the layout behaved differently on a real Android device due to the system status bar and navigation bar.
+**Learning:** We learned to manage safe spacing using page-level SCSS and proper padding.
+
+### 2. Dark Mode Styling Issues
+**Issue:** Android system dark mode automatically changed Ionic styles, causing text to appear white on light backgrounds.
+**Learning:** We learned how Ionic detects system themes and how to enforce a consistent light theme.
+
+### 3. API and Permission Issues
+**Issue:** Capacitor APIs such as camera, speech recognition, and geolocation required explicit runtime permissions on Android.
+**Learning:** We learned that mobile apps need permission handling beyond browser testing.
+
+### 4. Java and Android Build Toolchain Issues
+**Issue:** The Android build failed because Gradle required Java JDK 21 while a newer Java version was installed.
+**Learning:** We learned the importance of correct toolchain versions and Gradle configuration.
+
+### 5. Form State Binding Issues
+**Issue:** Radio buttons and dropdowns displayed options but initially did not store user selections.
+**Learning:** We learned to use Angular two-way data binding with `ngModel` correctly.
+
+### 6. Managing Multiple Features in One App
+**Issue:** Integrating many features into a single app made code organization challenging.
+**Learning:** We learned modular design using tabs and separation of UI, logic, and styling.
