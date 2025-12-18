@@ -175,3 +175,4 @@ Light theme is enforced to avoid dark-mode contrast issues.
 <img width="379" height="762" alt="image" src="https://github.com/user-attachments/assets/65a6ca9c-ee0b-4bae-a976-67d48b620607" />
 <img width="1920" height="1000" alt="image" src="https://github.com/user-attachments/assets/9a7bdbe9-b104-4c3e-9332-be2a2b316d85" />
 <img width="1920" height="986" alt="image" src="https://github.com/user-attachments/assets/d713bda3-7f23-4452-aef9-32126cb537d1" />
+<img width="1920" height="947" alt="image" src="https://github.com/user-attachments/assets/27a55b6b-0ce6-4122-85ef-07c03a50799b" />
